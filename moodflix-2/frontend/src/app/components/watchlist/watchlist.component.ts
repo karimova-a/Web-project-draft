@@ -40,9 +40,9 @@ import { ApiService, WatchlistItem } from '../../services/api.service';
               <p class="card-meta">{{ item.movie_detail.genre_name }} · {{ item.movie_detail.release_date | slice:0:4 }}</p>
               <div class="card-actions">
                 <select [(ngModel)]="item.status" (change)="updateStatus(item)" class="status-select">
-                  <option value="planned">📋 Planned</option>
-                  <option value="watching">▶️ Watching</option>
-                  <option value="completed">✅ Completed</option>
+                  <option value="planned"> Planned</option>
+                  <option value="watching">▶Watching</option>
+                  <option value="completed">Completed</option>
                 </select>
                 <div class="star-rating">
                   @for (s of [1,2,3,4,5]; track s) {
@@ -62,8 +62,8 @@ import { ApiService, WatchlistItem } from '../../services/api.service';
     </div>
   `,
   styles: [`
-    .page { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    .page-title { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
+    .page { max-width: 800px; margin: 0 auto; padding: 4rem; }
+    .page-title { font-size: 2.3rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
     .tab {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
@@ -76,10 +76,10 @@ import { ApiService, WatchlistItem } from '../../services/api.service';
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
       border-radius: 12px; margin-bottom: 0.8rem;
     }
-    .card-poster { flex: 0 0 80px; }
-    .card-poster img { width: 80px; height: 120px; object-fit: cover; border-radius: 8px; }
+    .card-poster { flex: 0 0 220px; }
+    .card-poster img { width: 180px; height: 220px; object-fit: cover; border-radius: 8px; }
     .card-info { flex: 1; }
-    .card-info h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .card-info h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.3rem; }
     .card-meta { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 0.8rem; }
     .card-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
     .status-select {

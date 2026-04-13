@@ -71,9 +71,9 @@ import { ApiService, SearchUser, FriendActivity, SimpleUser } from '../../servic
         </div>
       </div>
 
-      <!-- Activity Feed -->
+  
       <div class="activity-section">
-        <h2 class="section-title">🍿 What your friends are watching</h2>
+        <h2 class="section-title"> What your friends are watching</h2>
         @if (activities.length === 0) {
           <p class="empty">No activity yet. Follow some people to see what they're watching!</p>
         }
@@ -108,8 +108,8 @@ import { ApiService, SearchUser, FriendActivity, SimpleUser } from '../../servic
   `,
   styles: [`
     .page { max-width: 800px; margin: 0 auto; padding: 2rem; }
-    .page-title { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+    .page-title { font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
 
     .search-section { margin-bottom: 2.5rem; }
     .search-bar { display: flex; gap: 0.8rem; margin-bottom: 1rem; }

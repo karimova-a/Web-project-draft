@@ -42,27 +42,119 @@ import { ApiService, MoodEntry } from '../../services/api.service';
     </div>
   `,
   styles: [`
-    .page { max-width: 700px; margin: 0 auto; padding: 2rem; }
-    .page-title { font-size: 2rem; font-weight: 800; color: #fff; }
-    .subtitle { color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
-    .empty { text-align: center; color: rgba(255,255,255,0.5); padding: 3rem; }
-    .empty a { color: #ffd200; }
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem;
+    }
+
+    .page-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* Главное — нормальный скролл */
+    .timeline {
+      max-height: 80vh;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .empty {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      padding: 3rem;
+      font-size: 1.2rem;
+    }
+
+    .empty a {
+      color: #ffd200;
+      font-weight: 600;
+    }
+
     .entry-card {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px; padding: 1.2rem; margin-bottom: 0.8rem;
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .entry-mood { display: flex; align-items: center; gap: 0.5rem; }
-    .mood-emoji { font-size: 2rem; }
-    .mood-text { color: #ffd200; font-weight: 600; text-transform: capitalize; }
-    .entry-info { flex: 1; }
-    .entry-date { color: rgba(255,255,255,0.4); font-size: 0.85rem; display: block; }
-    .entry-note { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+    .entry-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .entry-mood {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 160px;
+    }
+
+    .mood-emoji {
+      font-size: 2.8rem;
+    }
+
+    .mood-text {
+      color: #ffd200;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-transform: capitalize;
+    }
+
+    .entry-info {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .entry-date {
+      color: rgba(255,255,255,0.45);
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-note {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem;
+    }
+
     .rec-movie {
-      display: flex; align-items: center; gap: 0.5rem;
-      text-decoration: none; color: #fff; font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.03);
+      padding: 0.5rem 0.7rem;
+      border-radius: 10px;
     }
-    .rec-poster { width: 40px; height: 60px; object-fit: cover; border-radius: 6px; }
+
+    .rec-movie:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .rec-poster {
+      width: 60px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
   `]
 })
 export class MoodDiaryComponent implements OnInit {
@@ -78,9 +170,12 @@ export class MoodDiaryComponent implements OnInit {
     this.api.getMoodEntries().subscribe(e => this.entries = e);
   }
 
-  getMoodEmoji(mood: string): string { return this.emojiMap[mood] || '🎬'; }
+  getMoodEmoji(mood: string): string {
+    return this.emojiMap[mood] || '🎬';
+  }
 
   onImgError(event: Event) {
-    (event.target as HTMLImageElement).src = 'https://via.placeholder.com/40x60?text=N/A';
+    (event.target as HTMLImageElement).src =
+        'https://via.placeholder.com/60x90?text=N/A';
   }
 }
